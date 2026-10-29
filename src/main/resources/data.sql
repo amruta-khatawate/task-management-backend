@@ -19,7 +19,7 @@ VALUES
 
     ('Pay Electricity Bill',
      'Pay the monthly electricity bill before due date',
-     'finance', 'High', '2030-12-12', 'Pending', '2030-12-02', NULL),
+     'Finance', 'High', '2030-12-12', 'Pending', '2030-12-02', NULL),
 
     ('Read JavaScript Book',
      'Complete chapters 5-8 Eloquent JavaScript',
@@ -27,7 +27,7 @@ VALUES
 
     ('Birthday Gift for Mom',
      'Buy a nice gift for mom''s birthday neaxt week',
-     'personal', 'High', '2030-12-14', 'Pending', '2030-12-05', NULL),
+     'Personal', 'High', '2030-12-14', 'Pending', '2030-12-05', NULL),
 
     ('Fix Kitchen Tap',
      'The kitchen tap is leaking, need to call a plumber or fix it',
