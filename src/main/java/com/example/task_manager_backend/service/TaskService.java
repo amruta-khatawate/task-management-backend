@@ -23,4 +23,16 @@ public class TaskService {
 //            return list;
        return taskRepository.findAll();
     }
+
+    public Task getTaskById(int id) {
+        return taskRepository.findById(id).get();
+    }
+
+    public boolean deleteTaskById(int id) {
+        if(!taskRepository.existsById(id)){
+            return false;
+        }
+        taskRepository.deleteById(id);
+        return true;
+    }
 }
