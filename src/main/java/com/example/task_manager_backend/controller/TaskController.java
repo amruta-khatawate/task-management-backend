@@ -5,6 +5,8 @@ import com.example.task_manager_backend.model.Task;
 import com.example.task_manager_backend.service.TaskService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,27 +20,32 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping("/tasks")
-    public List<Task> getAllTasks(){
-       return taskService.getAllTasks();
+    public ResponseEntity<List<Task>> getAllTasks(){
+        return new ResponseEntity<>(taskService.getAllTasks(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Task getTaskById(@PathVariable int id){
-        return taskService.getTaskById(id);
+    public ResponseEntity<Task> getTaskById(@PathVariable int id){
+        if(taskService.existsById(id)){
+            return new ResponseEntity<>(taskService.getTaskById(id), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteTaskById(@PathVariable int id){
-        boolean result = taskService.deleteTaskById(id);
-        if(result){
-            return "Deleted Successfully.";
+    public ResponseEntity<Void> deleteTaskById(@PathVariable int id){
+        if(taskService.existsById(id)){
+            taskService.deleteTaskById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        else{
-            return "Task not found!";
-        }
-    }
-    @PostMapping("/{id}")
-    public void addTask(@PathVariable int id){
 
+         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
+
+    @PostMapping()
+    public ResponseEntity<Task> addTask(@RequestBody Task task){
+        Task savedtask = taskService.createTask(task);
+        return new ResponseEntity<>(savedtask, HttpStatus.CREATED);
     }
 }
