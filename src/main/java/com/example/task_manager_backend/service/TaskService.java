@@ -15,12 +15,7 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-//    List<Task> list = new ArrayList<>(
-//           new Task(1, "task1", "Personal", "High", '2026-01-01', "Description", "Pending", '2026-01-02');
-//    );
-
     public List<Task> getAllTasks() {
-//            return list;
        return taskRepository.findAll();
     }
 
@@ -28,11 +23,15 @@ public class TaskService {
         return taskRepository.findById(id).get();
     }
 
-    public boolean deleteTaskById(int id) {
-        if(!taskRepository.existsById(id)){
-            return false;
-        }
+    public void deleteTaskById(int id) {
         taskRepository.deleteById(id);
-        return true;
+    }
+
+    public boolean existsById(int id){
+        return taskRepository.existsById(id);
+    }
+
+    public Task createTask(Task task) {
+        return taskRepository.save(task);
     }
 }
