@@ -34,18 +34,21 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTaskById(@PathVariable int id){
-        if(taskService.existsById(id)){
             taskService.deleteTaskById(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-
-         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
+            return new ResponseEntity<>( HttpStatus.OK);
+        
     }
 
     @PostMapping()
     public ResponseEntity<Task> addTask(@RequestBody Task task){
         Task savedtask = taskService.createTask(task);
         return new ResponseEntity<>(savedtask, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> updateTaskById(@PathVariable int id, @RequestBody Task task){
+
+        Task updatedTask = taskService.updateTaskById(id, task);
+        return new ResponseEntity<>(updatedTask, HttpStatus.OK);
     }
 }
