@@ -4,8 +4,7 @@ Spring Boot REST API for a task management app — full CRUD over tasks, consume
 
 **Live API:** [task-management-backend-xsos.onrender.com](https://task-management-backend-xsos.onrender.com)
 
-<!-- Screenshot or GIF goes here -->
-![Task Manager dashboard](docs/screenshot.png)
+[Task Manager dashboard](image.png)
 
 > **Demo note:** the deployed instance is on Render's free tier with an H2 in-memory
 > database. It sleeps after ~15 minutes idle (first request can take 30–60s to wake),
