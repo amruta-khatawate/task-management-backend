@@ -1,6 +1,17 @@
-# Task Manager – Spring Boot Backend
+# Task Manager Backend
 
-A RESTful backend application developed using Java and Spring Boot for the Task Manager application.
+Spring Boot REST API for a task management app — full CRUD over tasks, consumed by an Angular frontend.
+
+**Live API:** [task-management-backend-xsos.onrender.com](https://task-management-backend-xsos.onrender.com)
+
+<!-- Screenshot or GIF goes here -->
+![Task Manager dashboard](docs/screenshot.png)
+
+> **Demo note:** the deployed instance is on Render's free tier with an H2 in-memory
+> database. It sleeps after ~15 minutes idle (first request can take 30–60s to wake),
+> and all data is reset on every restart or deploy. 
+
+
 
 This repository contains the backend implementation responsible for handling task-related operations, processing API requests from the Angular frontend, and managing task data using Spring Data JPA and an H2 in-memory database.
 
